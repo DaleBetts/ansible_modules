@@ -23,4 +23,16 @@
     - "postgresql{{ pg_short_ver }}-contrib"
     - "postgresql{{ pg_short_ver }}-libs"
   tags: ['core_pg_packages']
+
+- name: Confirm Database Owner and Generate SSH key 
+  user: 
+    name: "{{ postgres_owner }}"
+    state: present
+    generate_ssh_key: yes
+  tags: ['create_db_owner']
+
+- name: Add Profile for Owner
+  template:
+    src=/templates/
+
 ...
