@@ -1,0 +1,9 @@
+---
+# file: dbservers.yml
+- hosts: localhost
+  roles: 
+  - postgresql_install
+  vars_files:
+    - "group_vars/all"
+  
+...
