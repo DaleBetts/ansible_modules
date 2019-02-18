@@ -4,13 +4,13 @@
   yum: 
     name: pgdg-centos{{ pg_short_ver }}
     state: installed
-  when: ansible_distribution == 'CentOS'
+  when: ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CentOS'
  
 - name: Ensure PGDG Installed and Enabled (RedHat)
   yum: 
     name: pgdg-redhat{{ pg_short_ver }}
     state: installed
-  when: ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CentOS'
 
 - name: Yum Install PostgreSQL Packages
   yum:
@@ -22,6 +22,7 @@
     - "postgresql{{ pg_short_ver }}-devel"
     - "postgresql{{ pg_short_ver }}-contrib"
     - "postgresql{{ pg_short_ver }}-libs"
+  when: ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CentOS'
   tags: ['core_pg_packages']
 
 - name: Confirm Database Owner and Generate SSH key 

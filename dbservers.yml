@@ -2,6 +2,7 @@
 # file: dbservers.yml
 - hosts: localhost
   roles: 
+  - httpd
   - postgresql_install
   vars_files:
     - "group_vars/all"
